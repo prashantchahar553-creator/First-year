@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmos Explorer | Space & Astronomy</title>
+  <style>
+    :root {
+      --bg-dark: #070b19;
+      --card-bg: #11182d;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px);
+      background-size: 550px 550px, 350px 350px;
+      background-position: 0 0, 40px 60px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 25, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 5%;
+      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #070b19;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 20px var(--accent-glow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    /* Sections */
+    section {
+      padding: 4.5rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    /* Grid Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Interactive Fact Box */
+    .fact-box {
+      background: linear-gradient(135deg, #11182d, #172554);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    #fact-text {
+      font-size: 1.2rem;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #e2e8f0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 5%;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">✦ COSMOS</div>
+    <nav>
+      <a href="#destinations">Destinations</a>
+      <a href="#missions">Missions</a>
+      <a href="#facts">Space Facts</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Journey Beyond Our Horizon</h1>
+      <p>Explore the wonders of deep space, planetary science, and humanity's boldest missions to the stars.</p>
+      <a href="#destinations" class="btn">Start Exploring</a>
+    </section>
+
+    <section id="destinations">
+      <h2 class="section-title">Featured Cosmic Destinations</h2>
+      <p class="section-subtitle">Key worlds and phenomena shaping modern astronomy</p>
+      <div class="grid">
+        <article class="card">
+          <span class="badge">Red Planet</span>
+          <h3>Mars & Olympus Mons</h3>
+          <p>Home to the largest volcano in the solar system—nearly three times the height of Mount Everest—and ancient river valleys.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Icy Moon</span>
+          <h3>Europa (Jupiter)</h3>
+          <p>Beneath its fractured crust of water ice lies a global subsurface ocean containing more than twice the water of Earth's oceans.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Stellar Nursery</span>
+          <h3>Orion Nebula (M42)</h3>
+          <p>Located 1,344 light-years away, this glowing cloud of gas and dust is one of the closest regions of massive star formation to Earth.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="missions">
+      <h2 class="section-title">Landmark Space Missions</h2>
+      <p class="section-subtitle">Robotic pioneers expanding human knowledge</p>
+      <div class="grid">
+        <article class="card">
+          <span class="badge">Infrared Observatory</span>
+          <h3>James Webb Space Telescope</h3>
+          <p>Observing the universe in infrared light to study the earliest galaxies formed after the Big Bang and analyze exoplanet atmospheres.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Interstellar</span>
+          <h3>Voyager 1</h3>
+          <p>Launched in 1977, it is the farthest human-made object from Earth, currently transmitting data from interstellar space.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Lunar Return</span>
+          <h3>Artemis Program</h3>
+          <p>Establishing sustainable human presence on the Moon as a stepping stone for future crewed expeditions to Mars.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="facts">
+      <div class="fact-box">
+        <span class="badge">Interactive Generator</span>
+        <h2>Did You Know?</h2>
+        <p id="fact-text">A single day on Venus is longer than a full year on Venus.</p>
+        <button class="btn" onclick="newFact()">Next Space Fact</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created by <span>[Prashant] — Section [AI]</span> | Hosted Static Web Project</p>
+  </footer>
+
+  <script>
+    const facts = [
+      "A single day on Venus is longer than a full year on Venus.",
+      "Neutron stars can spin up to 716 times per second.",
+      "Footprints left on the Moon by Apollo astronauts could last for millions of years because there is no wind.",
+      "One million Earths could fit inside the Sun.",
+      "Light from the Sun takes approximately 8 minutes and 20 seconds to reach Earth."
+    ];
+
+    let currentIndex = 0;
+
+    function newFact() {
+      currentIndex = (currentIndex + 1) % facts.length;
+      document.getElementById("fact-text").textContent = facts[currentIndex];
+    }
+  </script>
+
+</body>
+</html>
